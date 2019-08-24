@@ -14,11 +14,12 @@ import com.kevin.app.states.Game;
 
 public class Patrick extends EnemyObject {
 
-    private int size = 200;
+    private int size = 500;
     private BufferedImage image;
     private int recharge = 300;
     private float velX, velY;
-    private int speed = 15;
+    private int speed = 12;
+    private int numOfCharges = 5;
 
     public Patrick(float x, float y, ObjectIds ObjectId, EnemyId enemyId) {
         super(x, y, ObjectId, enemyId);
@@ -59,10 +60,19 @@ public class Patrick extends EnemyObject {
 
         collision();
 
+        if(numOfCharges == 0){
+            Game.handler.addBlocks(new Block((int)x, (int)y, ObjectIds.Block, BlockId.Key));
+            Game.handler.removeEnemy(this);
+        }
         x += velX;
         y += velY;
 
 
+    }
+
+    public void reduceSize(){
+        size = (int)(size/2);
+        numOfCharges--;
     }
 
     public void collision(){
@@ -71,6 +81,7 @@ public class Patrick extends EnemyObject {
             velX = 0;
             y += velY;
             velY = 0;
+            reduceSize();
             return;
         }
 
@@ -79,6 +90,7 @@ public class Patrick extends EnemyObject {
             velX = 0;
             y += velY;
             velY = 0;
+            reduceSize();
             return;
         }
 
@@ -91,6 +103,7 @@ public class Patrick extends EnemyObject {
                         velY = 0;
                         x = (float)block.getBounds().getX();
                         y = (float)block.getBounds().getY() - 32 - size;
+                        reduceSize();
                     }
                 }
             }
