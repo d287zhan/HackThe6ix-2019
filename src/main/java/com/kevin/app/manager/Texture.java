@@ -104,7 +104,7 @@ public class Texture {
 
         //Characters
         sprites.put("shady_dealer" , wall_sheet.grabImage(1,182,47,48));
-        sprites.put("pirate_boss" , wall_sheet.grabImage(4,397,26,26));
+        sprites.put("pirate_boss" , wall_sheet.grabImage(272, 279, 210, 231));
 
         //mug_shot
         sprites.put("mug_shot" , wall_sheet.grabImage(301,0,43,37));

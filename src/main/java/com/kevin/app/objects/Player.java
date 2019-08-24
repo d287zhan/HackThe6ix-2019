@@ -190,8 +190,9 @@ public class Player extends PlayerObject {
         if (this.showClue) {
             g.drawImage(App.getImageFromTextures("empty_clue"), 95, 50, 750, 750, null);
             g.setFont(App.gameFont.deriveFont(20f));
-            System.out.println(Game.level.getLevel());
             if(Game.level.getLevel() == 1){
+                g.drawString(clueString, 230, 440);
+            }else if(Game.level.getLevel() == 3){
                 g.drawString(clueString, 230, 440);
             }
         }

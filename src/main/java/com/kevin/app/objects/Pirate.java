@@ -3,6 +3,7 @@ package com.kevin.app.objects;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.kevin.app.HUD.HUD;
@@ -11,6 +12,7 @@ import com.kevin.app.abstract_objects.EnemyObject;
 import com.kevin.app.ids.BlockId;
 import com.kevin.app.ids.EnemyId;
 import com.kevin.app.ids.ObjectIds;
+import com.kevin.app.main.App;
 import com.kevin.app.states.Game;
 
 public class Pirate extends EnemyObject {
@@ -19,20 +21,22 @@ public class Pirate extends EnemyObject {
 
     private int health = 100;
 
+    private BufferedImage image;
+
     private float velX = 4f;
     Random rand;
     public Pirate(float x, float y, ObjectIds ObjectId, EnemyId enemyId) {
         super(x, y, ObjectId, enemyId);
         rand = new Random();
+        image = App.getImageFromTextures("pirate_boss");
     }
 
 	@Override
     public void render(Graphics2D g) {
-        g.setColor(Color.black);
-        g.fillRect((int)x, (int)y, 100, 200);
+        g.drawImage(image, (int)x, (int)y, 200, 200, null);
 
         g.setColor(Color.green);
-        g.fillRect((int)x, (int)y + 20, (int)(100 * (health*1.0/100)), 15);
+        g.fillRect((int)x, (int)y - 20, (int)(100 * (health*1.0/100)), 15);
     }
 
     @Override
