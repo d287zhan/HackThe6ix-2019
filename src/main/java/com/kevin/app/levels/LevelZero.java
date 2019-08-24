@@ -7,6 +7,8 @@ import java.awt.event.KeyListener;
 import com.kevin.app.abstract_objects.Level;
 import com.kevin.app.main.App;
 import com.kevin.app.manager.Handler;
+import com.kevin.app.objects.Player;
+import com.kevin.app.states.Game;
 
 public class LevelZero extends Level implements KeyListener {
 
@@ -25,12 +27,20 @@ public class LevelZero extends Level implements KeyListener {
 
     public void handleNextText() {
         if (textCount < 6) {
-            App.hud.renderBlack = true;
+            App.hud.showBlack = true;
         } else {
-            App.hud.renderBlack = false;
+            App.hud.showBlack = false;
         }
         App.hud.showText = true;
         App.hud.textDisplay(currentText[0], currentText[1]);
+    }
+
+    public void nextLevel(Level level, Player player) {
+        handler.removeAllBlocks();
+        Level nextLevel = new LevelOne(handler);
+        level = nextLevel;
+        Game.mapConstraints = level.getMapConstraints();
+        player.setPosition(100, 100);
     }
 
     @Override

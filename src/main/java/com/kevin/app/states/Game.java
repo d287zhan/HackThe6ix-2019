@@ -16,10 +16,10 @@ import com.kevin.app.objects.Player;
 
 public class Game extends State {
 
-    private Player player;
+    private static Player player;
     private App app;
     private Camera camera;
-    private Level level;
+    public static Level level;
     private static Handler handler;
     public static int[] mapConstraints;
 
@@ -46,6 +46,7 @@ public class Game extends State {
         camera.tick(player);
         handler.tick();
         player.tick();
+        App.hud.tick();
     }
 
     public void initializePlayer(int player_x, int player_y) {
@@ -54,5 +55,11 @@ public class Game extends State {
 
     public int getStateId() {
         return GameState.GAME;
+    }
+
+    public static void handleLevelChange() {
+        App.hud.renderBlack = true;
+        App.hud.setBlackTimeOut(10);
+        level.nextLevel(level, player);
     }
 }

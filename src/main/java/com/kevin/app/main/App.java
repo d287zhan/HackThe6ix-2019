@@ -19,6 +19,7 @@ import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.ColorOnStepTile;
 import com.kevin.app.objects.Fire;
 import com.kevin.app.objects.Floor;
+import com.kevin.app.objects.Stairs;
 import com.kevin.app.objects.Wall;
 
 public class App extends Canvas implements Runnable {
@@ -196,6 +197,10 @@ public class App extends Canvas implements Runnable {
                 } else if (red == 255 && green == 0 && blue == 1) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addSpecialBlocks(new Fire(xx * 64, yy * 64, ObjectIds.Block, BlockId.Fire));
+                } else if (red == 255 && green == 0 && blue == 2) {
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addBlocks(new Floor(xx * 64, (yy + 1) * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addSpecialBlocks(new Stairs(xx * 64, yy * 64, ObjectIds.Block, BlockId.Stairs));
                 } else {
                     handler.addBlocks(new ColorOnStepTile(xx * 64, yy * 64, ObjectIds.Block, BlockId.ColorTile,
                             new Color(red, green, blue)));

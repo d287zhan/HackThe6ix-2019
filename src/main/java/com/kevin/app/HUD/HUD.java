@@ -10,19 +10,27 @@ public class HUD {
 
     public boolean showText = false;
     public boolean renderBlack = false;
+    public boolean showBlack = false;
     private static String textToDisplay;
     private static BufferedImage image;
+    private int blackTimeout;
 
     public HUD() {
 
     }
 
     public void tick() {
-
+        if (blackTimeout > 0) {
+            blackTimeout--;
+            renderBlack = true;
+        } else {
+            blackTimeout = 0;
+            renderBlack = false;
+        }
     }
 
     public void render(Graphics2D g) {
-        if (renderBlack) {
+        if (renderBlack || showBlack) {
             g.setColor(Color.black);
             g.fillRect(0, 0, App.WIDTH, App.HEIGHT);
         }
@@ -38,5 +46,9 @@ public class HUD {
     public static void textDisplay(String person, String text) {
         textToDisplay = text;
         image = App.getImageFromTextures(person);
+    }
+
+    public void setBlackTimeOut(int value) {
+        blackTimeout = value;
     }
 }

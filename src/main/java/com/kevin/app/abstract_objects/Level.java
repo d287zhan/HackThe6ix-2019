@@ -10,6 +10,7 @@ import java.util.Queue;
 import com.kevin.app.main.App;
 import com.kevin.app.manager.BufferedImageLoader;
 import com.kevin.app.manager.Handler;
+import com.kevin.app.objects.Player;
 
 public abstract class Level {
     protected int level;
@@ -73,5 +74,7 @@ public abstract class Level {
     public abstract void tick();
 
     public abstract void render(Graphics2D g);
+
+    public abstract void nextLevel(Level level, Player player);
 
 }

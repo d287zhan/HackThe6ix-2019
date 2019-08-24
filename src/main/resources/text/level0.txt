@@ -9,4 +9,4 @@ player:I can not remember why I am here
 player:I think I was thrown here
 player:Against my will of course
 player:I need to climb out of here
-player:That door is my best chance at it
+player:Those staris are my best chance at it

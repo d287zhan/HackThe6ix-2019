@@ -92,5 +92,7 @@ public class Texture {
         sprites.put("fire6", fire_sheet.grabImage(494, 0, 99, 163));
         sprites.put("fire7", fire_sheet.grabImage(593, 0, 99, 163));
         sprites.put("fire8", fire_sheet.grabImage(692, 0, 99, 163));
+
+        sprites.put("stairs_up", wall_sheet.grabImage(128, 0, 95, 143));
     }
 }

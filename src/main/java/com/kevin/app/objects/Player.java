@@ -103,6 +103,14 @@ public class Player extends PlayerObject {
     }
 
     public void collision() {
+
+        for (int i = 0; i < handler.sBlocks.size(); i++) {
+            BlockObject block = handler.sBlocks.get(i);
+            if (block.getBlockId().equals(BlockId.Stairs) && block.getBounds().intersects(this.getBounds())) {
+                Game.handleLevelChange();
+            }
+        }
+
         for (int i = 0; i < handler.blocks.size(); i++) {
             BlockObject block = handler.blocks.get(i);
             if (block.getBlockId().equals(BlockId.ColorTile) && block.getBounds().intersects(this.getFootBounds())) {
@@ -117,7 +125,7 @@ public class Player extends PlayerObject {
                 x = block.getX() + 64;
             } else if (block.getBlockId().equals(BlockId.WallStraightRight)
                     && block.getBounds().intersects(this.getBounds())) {
-                x = block.getX() - 68;
+                // x = block.getX() - 68;
             } else if (block.getBlockId().equals(BlockId.WallStraightBottom)
                     && block.getBounds().intersects(this.getFootBounds()) && velY > 0) {
                 y = block.getY() - playerHeight - 6;
@@ -148,6 +156,8 @@ public class Player extends PlayerObject {
             g.setFont(App.gameFont.deriveFont(20f));
             g.drawString(clueString, 250, 510);
         }
+        g.setColor(Color.red);
+        g.draw(getBounds());
     }
 
     public void loadPlayerImages() {

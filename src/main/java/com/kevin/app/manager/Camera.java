@@ -18,7 +18,7 @@ public class Camera {
     public void tick(PlayerObject player) {
 
         if (x + ((player.getX() - x) - App.WIDTH / 2) * speed >= 0
-                && x + ((player.getX() - x) - App.WIDTH / 2) * speed <= (Game.mapConstraints[0] - App.WIDTH)) {
+                && x + ((player.getX() - x) - App.WIDTH / 2) * speed <= (Game.mapConstraints[0] - App.WIDTH + 15)) {
             x += ((player.getX() - x) - App.WIDTH / 2) * speed;
         }
         if (y + ((player.getY() - y) - App.HEIGHT / 2) * speed >= 0

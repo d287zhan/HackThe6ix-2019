@@ -28,4 +28,9 @@ public abstract class PlayerObject extends Object {
     public void setVelY(int value) {
         this.velY = value;
     }
+
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
