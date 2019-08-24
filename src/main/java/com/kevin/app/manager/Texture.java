@@ -7,8 +7,8 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_Sheet;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image;
 
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
@@ -22,6 +22,8 @@ public class Texture {
             wall_image = loader.loadImage("/sprites/wall.png");
             textbox_image = loader.loadImage("/sprites/textbox.png");
             fire_image = loader.loadImage("/sprites/fire.png");
+            extra_image = loader.loadImage("/sprites/other_stuff.png");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +32,7 @@ public class Texture {
         floor_sheet = new SpriteSheet(floor_image);
         wall_sheet = new SpriteSheet(wall_image);
         fire_sheet = new SpriteSheet(fire_image);
+        extra_sheet = new SpriteSheet(extra_image);
         getTextures();
 
     }
@@ -96,6 +99,19 @@ public class Texture {
         sprites.put("fire8", fire_sheet.grabImage(692, 0, 99, 163));
 
         sprites.put("stairs_up", wall_sheet.grabImage(128, 0, 95, 143));
-        sprites.put("stairs_after_up", App.flipImageHorizontally(wall_sheet.grabImage(28, 61, 32, 31)));
+
+        //Characters
+        sprites.put("shady_dealer" , wall_sheet.grabImage(1,182,47,48));
+        sprites.put("pirate_boss" , wall_sheet.grabImage(4,397,26,26));
+
+        //mug_shot
+        sprites.put("mug_shot" , wall_sheet.grabImage(301,0,43,37));
+
+        sprites.put("water" , extra_sheet.grabImage(0,0,258,258));
+
+        sprites.put("death_counter" , extra_sheet.grabImage(3,345,39,48));
+
+        sprites.put("key",extra_sheet.grabImage(409,9,153,139));
+
     }
 }
