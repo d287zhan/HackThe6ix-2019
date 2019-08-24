@@ -2,6 +2,7 @@ package com.kevin.app.states;
 
 import java.awt.Graphics2D;
 
+import com.kevin.app.HUD.HUD;
 import com.kevin.app.abstract_objects.Level;
 import com.kevin.app.ids.ObjectIds;
 import com.kevin.app.ids.PlayerId;
@@ -30,6 +31,7 @@ public class Game extends State {
         initializePlayer(player_x, player_y);
         camera = new Camera(0, 0);
         app.addKeyListener(new KeyInputHandler(player));
+        app.addKeyListener((LevelZero) level);
     }
 
     public void render(Graphics2D g) {
@@ -37,6 +39,7 @@ public class Game extends State {
         handler.render(g);
         player.render(g);
         g.translate(camera.getX(), camera.getY());
+        App.hud.render(g);
     }
 
     public void tick() {

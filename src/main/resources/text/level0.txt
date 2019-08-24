@@ -1,7 +1,12 @@
 narrator:Darkness looms
 narrator:There is nothing to be heard
-narrator:The cold air permeates through your bones
-narrator:Suddenly there's a bright light
+narrator:The cold seeps into your bones
+narrator:Suddenly there is a bright light
 narrator:The rays warm up the chilling room
 narrator:You awake
-player:Where am I?
+player:Where am I
+player:I can not remember why I am here
+player:I think I was thrown here
+player:Against my will of course
+player:I need to climb out of here
+player:That door is my best chance at it

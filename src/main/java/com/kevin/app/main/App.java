@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.kevin.app.HUD.HUD;
 import com.kevin.app.ids.BlockId;
 import com.kevin.app.ids.ObjectIds;
 import com.kevin.app.manager.Handler;
@@ -32,6 +33,7 @@ public class App extends Canvas implements Runnable {
     private static final int NUM_OF_BUFFERS = 3;
 
     private static App app;
+    public static HUD hud;
     private static Texture tex;
     private StateController controller;
 
@@ -41,6 +43,7 @@ public class App extends Canvas implements Runnable {
     public static void main(String[] args) {
         tex = new Texture();
         app = new App();
+        hud = new HUD();
         loadFonts();
         new Window(TITLE, WIDTH, HEIGHT, app);
     }

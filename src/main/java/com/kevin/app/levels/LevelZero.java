@@ -1,18 +1,36 @@
 package com.kevin.app.levels;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import com.kevin.app.abstract_objects.Level;
+import com.kevin.app.main.App;
 import com.kevin.app.manager.Handler;
-import com.kevin.app.objects.Clue;
 
-public class LevelZero extends Level {
+public class LevelZero extends Level implements KeyListener {
 
     private boolean isBoss = false;
+    private int[] textBreakPoints = new int[] { 6, 12 };
+    private int textCount = 0;
+    private String currentText[];
 
     public LevelZero(Handler handler) {
         super(handler, 0);
         loadLevelText();
+        this.currentText = nextLine();
+        this.textCount = 1;
+        handleNextText();
+    }
+
+    public void handleNextText() {
+        if (textCount < 6) {
+            App.hud.renderBlack = true;
+        } else {
+            App.hud.renderBlack = false;
+        }
+        App.hud.showText = true;
+        App.hud.textDisplay(currentText[0], currentText[1]);
     }
 
     @Override
@@ -26,6 +44,31 @@ public class LevelZero extends Level {
 
     @Override
     public void render(Graphics2D g) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_SPACE) {
+            textCount++;
+            if (textCount <= 12) {
+                currentText = nextLine();
+                handleNextText();
+            } else {
+                App.hud.showText = false;
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 
