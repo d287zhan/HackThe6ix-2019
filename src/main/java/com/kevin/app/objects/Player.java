@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import com.kevin.app.HUD.HUD;
 import com.kevin.app.abstract_objects.BlockObject;
 import com.kevin.app.abstract_objects.PlayerObject;
 import com.kevin.app.ids.BlockId;
@@ -34,8 +35,9 @@ public class Player extends PlayerObject {
     private HashMap<String, Animation> pAnimations = new HashMap<>();
     private HashMap<String, BufferedImage> stillPlayer = new HashMap<>();
 
-    public static boolean hasKey = true;
-
+    public static boolean hasKey = false;
+    public static int deaths = 0;
+    public static int[] respawnPosition;
 
     public Player(int x, int y, ObjectIds ObjectId, PlayerId PlayerId, Handler handler) {
         super(x, y, ObjectId, PlayerId);
@@ -79,8 +81,10 @@ public class Player extends PlayerObject {
             y = Game.mapConstraints[0] - playerHeight;
         }
 
-        x += velX;
-        y += velY;
+        if(!App.hud.showBlack && !App.hud.showText && !HUD.isDead){
+            x += velX;
+            y += velY;
+        }
 
         if (walking) {
             pAnimations.get(direction).runAnimation();
@@ -141,6 +145,22 @@ public class Player extends PlayerObject {
                 } else {
                     this.showClue = false;
                 }
+            }
+
+            if((block.getBlockId().equals(BlockId.Water) || block.getBlockId().equals(BlockId.FakeKey)) && 
+                block.getBounds().intersects(this.getFootBounds())){
+                deaths++;
+                HUD.isDead = true;
+                App.hud.showBlack = true;
+            }
+
+            if(block.getBlockId().equals(BlockId.Key) && block.getBounds().intersects(this.getFootBounds())){
+                hasKey = true;
+                handler.removeBlock(block);
+            }
+
+            if (block.getBlockId().equals(BlockId.Door) && block.getBounds().intersects(this.getFootBounds())) {
+                Game.handleLevelChange();
             }
         }
     }

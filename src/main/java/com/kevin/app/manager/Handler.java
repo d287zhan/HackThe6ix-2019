@@ -32,16 +32,17 @@ public class Handler {
     }
 
     public void render(Graphics2D g) {
-        for (int i = 0; i < enemies.size(); i++) {
-            enemies.get(i).render(g);
-        }
-
+        
         for (int i = 0; i < blocks.size(); i++) {
             blocks.get(i).render(g);
         }
-
+        
         for (int i = 0; i < sBlocks.size(); i++) {
             sBlocks.get(i).render(g);
+        }
+        
+        for (int i = 0; i < enemies.size(); i++) {
+            enemies.get(i).render(g);
         }
     }
 

@@ -4,8 +4,8 @@ import java.awt.Graphics2D;
 
 import com.kevin.app.abstract_objects.Level;
 import com.kevin.app.manager.Handler;
-import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.Player;
+import com.kevin.app.states.Game;
 
 public class LevelOne extends Level {
 
@@ -32,7 +32,11 @@ public class LevelOne extends Level {
 
 	@Override
 	public Level nextLevel(Level level, Player player) {
-		return null;
+		handler.removeAllBlocks();
+        Level nextLevel = new LevelTwo(handler);
+        Game.mapConstraints = nextLevel.getMapConstraints();
+        player.setPosition(100, 100);
+        return nextLevel;
 	}
 
 }

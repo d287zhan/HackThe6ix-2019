@@ -7,7 +7,7 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_Sheet;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet;
     private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image;
 
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
@@ -110,6 +110,8 @@ public class Texture {
         sprites.put("water" , extra_sheet.grabImage(0,0,258,258));
 
         sprites.put("death_counter" , extra_sheet.grabImage(3,345,39,48));
+
+        sprites.put("stairs_after_up", App.flipImageHorizontally(wall_sheet.grabImage(28, 61, 32, 31)));
 
         sprites.put("key",extra_sheet.grabImage(409,9,153,139));
 

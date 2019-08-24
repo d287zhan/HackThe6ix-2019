@@ -14,13 +14,17 @@ import java.io.InputStream;
 
 import com.kevin.app.HUD.HUD;
 import com.kevin.app.ids.BlockId;
+import com.kevin.app.ids.EnemyId;
 import com.kevin.app.ids.ObjectIds;
 import com.kevin.app.manager.Handler;
 import com.kevin.app.manager.Texture;
+import com.kevin.app.objects.Block;
 import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.ColorOnStepTile;
 import com.kevin.app.objects.Fire;
 import com.kevin.app.objects.Floor;
+import com.kevin.app.objects.Pirate;
+import com.kevin.app.objects.Player;
 import com.kevin.app.objects.Stairs;
 import com.kevin.app.objects.Wall;
 
@@ -204,15 +208,25 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, (yy + 1) * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addSpecialBlocks(new Stairs(xx * 64, yy * 64, ObjectIds.Block, BlockId.Stairs));
                 } else if (red == 0 && green == 100 && blue == 100 ){
-                    //stair up 
+                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.StairsPrevUp));
+                    Player.respawnPosition = new int[]{(xx+1) * 64, yy*64};
                 } else if ( red == 0 && green == 57 && blue == 12){
-                    //fake key
-                }
-                else if (red == 251 && green == 255 && blue == 25){
-                    //water
-                }else if (red == 23 && green == 230 && blue == 203){
-                    //real key
-                }else {
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.FakeKey));
+                } else if (red == 251 && green == 255 && blue == 25){
+                    handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Water));
+                } else if (red == 23 && green == 230 && blue == 203){
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Key));
+                } else if (red == 25 && green == 1 && blue == 255){
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addEnemy(new Pirate(xx * 64, yy * 64, ObjectIds.Enemy, EnemyId.Pirate));
+                } else if (red == 11 && green == 76 && blue == 77){
+                    // player
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                } else if (red == 9 && green == 255 && blue == 85){
+                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.WallStraightBottom));
+                } else {
                     handler.addBlocks(new ColorOnStepTile(xx * 64, yy * 64, ObjectIds.Block, BlockId.ColorTile,
                             new Color(red, green, blue)));
                 }

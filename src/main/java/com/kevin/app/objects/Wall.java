@@ -48,6 +48,7 @@ public class Wall extends BlockObject {
 
     @Override
     public void render(Graphics2D g) {
+        
         g.drawImage(image, (int) x, (int) y, 64, 64, null);
     }
 

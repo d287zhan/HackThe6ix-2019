@@ -9,8 +9,6 @@ import com.kevin.app.objects.Player;
 
 public class LevelTwo extends Level {
 
-	private boolean isBoss = false;
-
 	public LevelTwo(Handler handler) {
 		super(handler, 2);
 		loadLevelText();

@@ -13,6 +13,7 @@ public class HUD {
     public boolean renderBlack = false;
     public boolean showBlack = false;
     private static String textToDisplay;
+    public static boolean isDead = false;
     private static BufferedImage image;
     private int blackTimeout;
     private Player player;
@@ -37,9 +38,15 @@ public class HUD {
             g.setColor(Color.black);
             g.fillRect(0, 0, App.WIDTH, App.HEIGHT);
         }
+
+        if(isDead){
+            g.setColor(Color.white);
+            g.setFont(App.gameFont.deriveFont(20f));
+            g.drawString("YOU ARE DEAD", 350, 350);
+        }
+
         if (showText) {
             g.drawImage(App.getImageFromTextures("textbox"), 50, 650, 800, 200, null);
-
             g.setColor(Color.black);
             g.setFont(App.gameFont.deriveFont(20f));
             g.drawString(textToDisplay, 100, 725);

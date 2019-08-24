@@ -3,6 +3,8 @@ package com.kevin.app.manager;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import com.kevin.app.HUD.HUD;
+import com.kevin.app.main.App;
 import com.kevin.app.main.GameState;
 import com.kevin.app.main.StateController;
 import com.kevin.app.objects.Player;
@@ -28,6 +30,14 @@ public class KeyInputHandler extends KeyAdapter {
             return;
 
         int key = event.getKeyCode();
+
+        if(HUD.isDead){
+            if(key == KeyEvent.VK_SPACE){
+                player.setPosition(Player.respawnPosition[0], Player.respawnPosition[1]);
+                HUD.isDead = false;
+                App.hud.showBlack = false;
+            }
+        }
 
         if (key == KeyEvent.VK_NUMPAD1) {
             playerSpeed = (playerSpeed - 2 > 0) ? playerSpeed - 2 : 0;
