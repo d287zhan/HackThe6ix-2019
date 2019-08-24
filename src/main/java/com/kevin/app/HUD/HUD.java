@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import com.kevin.app.main.App;
 import com.kevin.app.objects.Player;
+import com.kevin.app.states.Game;
 
 public class HUD {
 
@@ -43,6 +44,16 @@ public class HUD {
             g.setColor(Color.white);
             g.setFont(App.gameFont.deriveFont(20f));
             g.drawString("YOU ARE DEAD", 350, 350);
+        }
+
+        if (player.showClue) {
+            g.drawImage(App.getImageFromTextures("empty_clue"), 95, 50, 750, 750, null);
+            g.setFont(App.gameFont.deriveFont(20f));
+            if(Game.level.getLevel() == 1){
+                g.drawString(player.clueString, 230, 440);
+            }else if(Game.level.getLevel() == 3){
+                g.drawString(player.clueString, 230, 440);
+            }
         }
 
         if (showText) {

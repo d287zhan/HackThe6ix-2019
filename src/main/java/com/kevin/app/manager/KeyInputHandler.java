@@ -45,7 +45,7 @@ public class KeyInputHandler extends KeyAdapter {
 
         if (key == KeyEvent.VK_NUMPAD1) {
             playerSpeed = (playerSpeed - 2 > 0) ? playerSpeed - 2 : 0;
-        } else if (key == KeyEvent.VK_NUMPAD3 || key == KeyEvent.VK_PLUS) {
+        } else if (key == KeyEvent.VK_NUMPAD3 || key == KeyEvent.VK_0) {
             playerSpeed += 2;
         }
 

@@ -25,8 +25,8 @@ public class Player extends PlayerObject {
     private int playerHeight = 87;
     private Handler handler;
     private boolean isHUDOpen = false;
-    private boolean showClue = false;
-    private String clueString = "";
+    public boolean showClue = false;
+    public String clueString = "";
 
     private BufferedImage walking_down[] = new BufferedImage[2];
     private BufferedImage walking_up[] = new BufferedImage[2];
@@ -186,15 +186,6 @@ public class Player extends PlayerObject {
             g.drawImage(stillPlayer.get(direction), (int) x, (int) y, 57, 87, null);
         } else {
             pAnimations.get(direction).drawAnimation(g, (int) x, (int) y, 57, 87);
-        }
-        if (this.showClue) {
-            g.drawImage(App.getImageFromTextures("empty_clue"), 95, 50, 750, 750, null);
-            g.setFont(App.gameFont.deriveFont(20f));
-            if(Game.level.getLevel() == 1){
-                g.drawString(clueString, 230, 440);
-            }else if(Game.level.getLevel() == 3){
-                g.drawString(clueString, 230, 440);
-            }
         }
         // g.setColor(Color.red);
         // g.draw(getBounds());

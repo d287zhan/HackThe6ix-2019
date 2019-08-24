@@ -16,7 +16,7 @@ import com.kevin.app.objects.Player;
 
 public class Game extends State {
 
-    private static Player player;
+    public static Player player;
     private App app;
     private Camera camera;
     public static Level level;

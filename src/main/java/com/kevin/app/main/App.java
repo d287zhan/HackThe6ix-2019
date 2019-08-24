@@ -23,6 +23,7 @@ import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.ColorOnStepTile;
 import com.kevin.app.objects.Fire;
 import com.kevin.app.objects.Floor;
+import com.kevin.app.objects.Patrick;
 import com.kevin.app.objects.Pirate;
 import com.kevin.app.objects.Player;
 import com.kevin.app.objects.Stairs;
@@ -227,7 +228,10 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                 } else if (red == 9 && green == 255 && blue == 85){
                     handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.WallStraightBottom));
-                } else {
+                } else if (red == 25 && green == 10 && blue == 255){
+                    handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
+                    handler.addEnemy(new Patrick(xx * 64, yy * 64, ObjectIds.Enemy, EnemyId.Patrick));
+                }else {
                     handler.addBlocks(new ColorOnStepTile(xx * 64, yy * 64, ObjectIds.Block, BlockId.ColorTile,
                             new Color(red, green, blue)));
                 }
