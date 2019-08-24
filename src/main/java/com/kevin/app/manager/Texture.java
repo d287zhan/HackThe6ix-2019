@@ -7,8 +7,8 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet,patrick;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image,patrick_image;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet,patrick,FenceH,FenceVL,FenceVR,FenceHFake;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image,patrick_image,FenceH_img,FenceVL_img,FenceVR_img,FenceHFake_img;
 
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
@@ -24,6 +24,10 @@ public class Texture {
             fire_image = loader.loadImage("/sprites/fire.png");
             extra_image = loader.loadImage("/sprites/other_stuff.png");
             patrick_image = loader.loadImage("/sprites/Patrick.png");
+            FenceH_img = loader.loadImage("/sprites/HFence.png");
+            FenceVR_img = loader.loadImage("/sprites/VFenceR.png");
+            FenceVL_img = loader.loadImage("/sprites/VFenceL.png");
+            FenceHFake_img = loader.loadImage("/sprites/HFenceFake.png");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,6 +39,10 @@ public class Texture {
         fire_sheet = new SpriteSheet(fire_image);
         extra_sheet = new SpriteSheet(extra_image);
         patrick = new SpriteSheet(patrick_image);
+        FenceH = new SpriteSheet(FenceH_img);
+        FenceVR = new SpriteSheet(FenceVR_img);
+        FenceVL = new SpriteSheet(FenceVL_img);
+        FenceHFake = new SpriteSheet(FenceHFake_img);
         getTextures();
 
     }
@@ -106,7 +114,6 @@ public class Texture {
         sprites.put("shady_dealer" , wall_sheet.grabImage(1,182,47,48));
         sprites.put("pirate_boss" , wall_sheet.grabImage(272, 279, 210, 231));
 
-        //mug_shot
         sprites.put("mug_shot" , wall_sheet.grabImage(301,0,43,37));
 
         sprites.put("water" , extra_sheet.grabImage(0,0,258,258));
@@ -117,7 +124,13 @@ public class Texture {
 
         sprites.put("key",extra_sheet.grabImage(409,9,153,139));
 
-        sprites.put("Patrick",patrick.grabImage(209,141,320,624));
+        sprites.put("Patrick",patrick.grabImage(154,104,548,722));
+
+        sprites.put("H Fence",HFence.grabImage(233,293,2883,991));
+        sprites.put("H Fence Fake",HFence.grabImage(233,293,2883,991));
+        sprites.put("VR Fence",HFence.grabImage(256,331,995,2875));
+        sprites.put("VL Fence",HFence.grabImage(290,233,991,2894));
+
 
     }
 }
