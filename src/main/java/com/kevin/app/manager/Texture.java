@@ -7,8 +7,8 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet,patrick;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image,patrick_image;
 
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
@@ -23,6 +23,7 @@ public class Texture {
             textbox_image = loader.loadImage("/sprites/textbox.png");
             fire_image = loader.loadImage("/sprites/fire.png");
             extra_image = loader.loadImage("/sprites/other_stuff.png");
+            patrick_image = loader.loadImage("/sprites/Patrick.png");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,6 +34,7 @@ public class Texture {
         wall_sheet = new SpriteSheet(wall_image);
         fire_sheet = new SpriteSheet(fire_image);
         extra_sheet = new SpriteSheet(extra_image);
+        patrick = new SpriteSheet(patrick_image);
         getTextures();
 
     }
@@ -114,6 +116,8 @@ public class Texture {
         sprites.put("stairs_after_up", App.flipImageHorizontally(wall_sheet.grabImage(28, 61, 32, 31)));
 
         sprites.put("key",extra_sheet.grabImage(409,9,153,139));
+
+        sprites.put("Patrick",patrick.grabImage(209,141,320,624));
 
     }
 }
