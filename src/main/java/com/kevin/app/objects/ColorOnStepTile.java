@@ -4,26 +4,29 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import com.kevin.app.abstract_objects.BlockObject;
 import com.kevin.app.ids.BlockId;
 import com.kevin.app.ids.ObjectIds;
+import com.kevin.app.main.App;
 
 public class ColorOnStepTile extends BlockObject {
 
     private boolean stepped = false;
     private Color onStepColor;
     private float colorComposite = 0.0f;
+    private BufferedImage floor;
 
     public ColorOnStepTile(float x, float y, ObjectIds ObjectId, BlockId blockId, Color color) {
         super(x, y, ObjectId, blockId);
         this.onStepColor = color;
+        floor = App.getImageFromTextures("floor");
     }
 
 	@Override
     public void render(Graphics2D g) {
-        g.setColor(Color.black);
-        g.fillRect((int)x, (int)y, 64, 64);
+        g.drawImage(floor, (int)x, (int)y, 64, 64, null);
         if(stepped){
             g.setColor(onStepColor);
             g.setComposite(AlphaComposite.SrcOver.derive(colorComposite));

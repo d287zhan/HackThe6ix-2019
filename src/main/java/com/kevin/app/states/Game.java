@@ -29,6 +29,7 @@ public class Game extends State {
         this.level = new LevelZero(handler);
         mapConstraints = this.level.getMapConstraints();
         initializePlayer(player_x, player_y);
+        App.hud.setPlayer(player);
         camera = new Camera(0, 0);
         app.addKeyListener(new KeyInputHandler(player));
         app.addKeyListener((LevelZero) level);
@@ -60,6 +61,6 @@ public class Game extends State {
     public static void handleLevelChange() {
         App.hud.renderBlack = true;
         App.hud.setBlackTimeOut(10);
-        level.nextLevel(level, player);
+        level = level.nextLevel(level, player);
     }
 }

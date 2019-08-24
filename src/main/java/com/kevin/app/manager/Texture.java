@@ -3,6 +3,8 @@ package com.kevin.app.manager;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import com.kevin.app.main.App;
+
 public class Texture {
 
     SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet;
@@ -94,5 +96,6 @@ public class Texture {
         sprites.put("fire8", fire_sheet.grabImage(692, 0, 99, 163));
 
         sprites.put("stairs_up", wall_sheet.grabImage(128, 0, 95, 143));
+        sprites.put("stairs_after_up", App.flipImageHorizontally(wall_sheet.grabImage(28, 61, 32, 31)));
     }
 }

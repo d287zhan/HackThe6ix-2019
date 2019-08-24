@@ -41,6 +41,8 @@ public class Wall extends BlockObject {
             image = App.getImageFromTextures("door_pillar_bottom");
         } else if (blockId.equals(BlockId.DoorPillarTop)) {
             image = App.getImageFromTextures("door_pillar_top");
+        } else if (blockId.equals(BlockId.StairsPrevUp)){
+            image = App.getImageFromTextures("stairs_after_up");
         }
     }
 
@@ -51,8 +53,12 @@ public class Wall extends BlockObject {
 
     @Override
     public void tick() {
-        if (bid.equals(BlockId.Door) && closed == false) {
+        if (bid.equals(BlockId.Door) && !closed) {
             image = App.getImageFromTextures("door_open");
+        }
+
+        if(Player.hasKey && bid.equals(BlockId.Door)){
+            closed = false;
         }
     }
 

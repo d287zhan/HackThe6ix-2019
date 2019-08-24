@@ -35,12 +35,12 @@ public class LevelZero extends Level implements KeyListener {
         App.hud.textDisplay(currentText[0], currentText[1]);
     }
 
-    public void nextLevel(Level level, Player player) {
+    public Level nextLevel(Level level, Player player) {
         handler.removeAllBlocks();
         Level nextLevel = new LevelOne(handler);
-        level = nextLevel;
-        Game.mapConstraints = level.getMapConstraints();
+        Game.mapConstraints = nextLevel.getMapConstraints();
         player.setPosition(100, 100);
+        return nextLevel;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class LevelZero extends Level implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        
     }
 
 }

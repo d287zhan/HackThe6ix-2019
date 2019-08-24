@@ -64,6 +64,10 @@ public abstract class Level {
         return mapConstraints;
     }
 
+    public int getLevel(){
+        return this.level;
+    }
+
     protected int[] loadLevel(String clue) {
         BufferedImageLoader loader = new BufferedImageLoader();
         int[] mapConstraints = App.loadImageLevel(loader.loadImage("/levels/level" + level + ".png"), this.handler,
@@ -75,6 +79,6 @@ public abstract class Level {
 
     public abstract void render(Graphics2D g);
 
-    public abstract void nextLevel(Level level, Player player);
+    public abstract Level nextLevel(Level level, Player player);
 
 }

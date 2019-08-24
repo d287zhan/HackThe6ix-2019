@@ -34,6 +34,9 @@ public class Player extends PlayerObject {
     private HashMap<String, Animation> pAnimations = new HashMap<>();
     private HashMap<String, BufferedImage> stillPlayer = new HashMap<>();
 
+    public static boolean hasKey = true;
+
+
     public Player(int x, int y, ObjectIds ObjectId, PlayerId PlayerId, Handler handler) {
         super(x, y, ObjectId, PlayerId);
         this.handler = handler;
@@ -152,12 +155,15 @@ public class Player extends PlayerObject {
             pAnimations.get(direction).drawAnimation(g, (int) x, (int) y, 57, 87);
         }
         if (this.showClue) {
-            g.drawImage(App.getImageFromTextures("empty_clue"), 115, 90, 750, 800, null);
+            g.drawImage(App.getImageFromTextures("empty_clue"), 95, 50, 750, 750, null);
             g.setFont(App.gameFont.deriveFont(20f));
-            g.drawString(clueString, 250, 510);
+            System.out.println(Game.level.getLevel());
+            if(Game.level.getLevel() == 1){
+                g.drawString(clueString, 230, 440);
+            }
         }
-        g.setColor(Color.red);
-        g.draw(getBounds());
+        // g.setColor(Color.red);
+        // g.draw(getBounds());
     }
 
     public void loadPlayerImages() {

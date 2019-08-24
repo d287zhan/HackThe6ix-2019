@@ -7,12 +7,12 @@ import com.kevin.app.manager.Handler;
 import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.Player;
 
-public class LevelOne extends Level {
+public class LevelTwo extends Level {
 
 	private boolean isBoss = false;
 
-	public LevelOne(Handler handler) {
-		super(handler, 1);
+	public LevelTwo(Handler handler) {
+		super(handler, 2);
 		loadLevelText();
 	}
 
@@ -26,13 +26,13 @@ public class LevelOne extends Level {
 
 	}
 
-	public int currentLevel() {	
+	public int currentLevel() {
 		return level;
 	}
 
 	@Override
 	public Level nextLevel(Level level, Player player) {
-		return null;
+        return null;
 	}
 
 }

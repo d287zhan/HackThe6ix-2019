@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -220,6 +222,17 @@ public class App extends Canvas implements Runnable {
         } else
             return false;
     }
+
+    public static BufferedImage flipImageHorizontally(BufferedImage original) 
+	{
+		BufferedImage newImage = original;
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-original.getWidth(null), 0);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		newImage = op.filter(newImage, null);
+
+		return newImage;
+	}
 
     public static BufferedImage getImageFromTextures(String key) {
         return tex.sprites.get(key);
