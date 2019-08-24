@@ -1,0 +1,7 @@
+narrator:Darkness looms
+narrator:There is nothing to be heard
+narrator:The cold air permeates through your bones
+narrator:Suddenly there's a bright light
+narrator:The rays warm up the chilling room
+narrator:You awake
+player:Where am I?
