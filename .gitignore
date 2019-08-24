@@ -1,3 +1,6 @@
 target/
 .vscode/
 ideas
+.classpath
+.settings/
+.project
