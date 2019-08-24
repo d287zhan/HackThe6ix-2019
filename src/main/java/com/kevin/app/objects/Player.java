@@ -122,6 +122,7 @@ public class Player extends PlayerObject {
             }
         }
 
+        boolean allStepped = true;
         for (int i = 0; i < handler.blocks.size(); i++) {
             BlockObject block = handler.blocks.get(i);
             if (block.getBlockId().equals(BlockId.ColorTile) && block.getBounds().intersects(this.getFootBounds())) {
@@ -167,9 +168,13 @@ public class Player extends PlayerObject {
                 Game.handleLevelChange();
             }
 
-            if(Game.level.getLevel() == 3){
-                
+            if(Game.level.getLevel() == 3 && block.getBlockId().equals(BlockId.ColorTile) && !((ColorOnStepTile)block).stepped){
+                allStepped = false;
             }
+        }
+
+        if(allStepped && Game.level.getLevel() == 3){
+            hasKey = true;
         }
     }
 

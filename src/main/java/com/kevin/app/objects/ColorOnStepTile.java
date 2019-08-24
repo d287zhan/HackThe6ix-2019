@@ -14,7 +14,7 @@ import com.kevin.app.main.App;
 
 public class ColorOnStepTile extends BlockObject {
 
-    private boolean stepped = false;
+    public boolean stepped = false;
     private Color onStepColor;
     private float colorComposite = 0.0f;
     private BufferedImage floor;
