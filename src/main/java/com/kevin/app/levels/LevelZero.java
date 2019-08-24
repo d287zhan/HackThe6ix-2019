@@ -17,8 +17,8 @@ public class LevelZero extends Level implements KeyListener {
     private int textCount = 0;
     private String currentText[];
 
-    public LevelZero(Handler handler) {
-        super(handler, 0);
+    public LevelZero(Handler handler, Player player) {
+        super(handler, 0, player);
         loadLevelText();
         this.currentText = nextLine();
         this.textCount = 1;
@@ -37,7 +37,7 @@ public class LevelZero extends Level implements KeyListener {
 
     public Level nextLevel(Level level, Player player) {
         handler.removeAllBlocks();
-        Level nextLevel = new LevelOne(handler);
+        Level nextLevel = new LevelOne(handler, player);
         Game.mapConstraints = nextLevel.getMapConstraints();
         player.setPosition(100, 100);
         return nextLevel;

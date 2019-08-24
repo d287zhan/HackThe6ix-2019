@@ -115,6 +115,10 @@ public class Player extends PlayerObject {
             BlockObject block = handler.sBlocks.get(i);
             if (block.getBlockId().equals(BlockId.Stairs) && block.getBounds().intersects(this.getBounds())) {
                 Game.handleLevelChange();
+            }else if(block.getBlockId().equals(BlockId.Orange) && block.getBounds().intersects(this.getBounds())){
+                // deaths++;
+                // HUD.isDead = true;
+                // App.hud.showBlack = true;
             }
         }
 
@@ -159,8 +163,12 @@ public class Player extends PlayerObject {
                 handler.removeBlock(block);
             }
 
-            if (block.getBlockId().equals(BlockId.Door) && block.getBounds().intersects(this.getFootBounds())) {
+            if (block.getBlockId().equals(BlockId.Door) && !((Wall)block).closed && block.getBounds().intersects(this.getFootBounds())) {
                 Game.handleLevelChange();
+            }
+
+            if(Game.level.getLevel() == 3){
+                
             }
         }
     }

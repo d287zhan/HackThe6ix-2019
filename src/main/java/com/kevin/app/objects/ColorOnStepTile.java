@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import com.kevin.app.abstract_objects.BlockObject;
 import com.kevin.app.ids.BlockId;
@@ -21,7 +22,8 @@ public class ColorOnStepTile extends BlockObject {
     public ColorOnStepTile(float x, float y, ObjectIds ObjectId, BlockId blockId, Color color) {
         super(x, y, ObjectId, blockId);
         this.onStepColor = color;
-        floor = App.getImageFromTextures("floor");
+        Random rand = new Random();
+        floor = App.getImageFromTextures("floor"+(rand.nextInt(16)+1));
     }
 
 	@Override

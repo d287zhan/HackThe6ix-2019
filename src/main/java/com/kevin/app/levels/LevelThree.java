@@ -7,12 +7,10 @@ import com.kevin.app.manager.Handler;
 import com.kevin.app.objects.Player;
 import com.kevin.app.states.Game;
 
-public class LevelOne extends Level {
+public class LevelThree extends Level {
 
-	private boolean isBoss = false;
-
-	public LevelOne(Handler handler, Player player) {
-		super(handler, 1, player);
+	public LevelThree(Handler handler, Player player) {
+		super(handler, 3, player);
 		loadLevelText();
 	}
 
@@ -26,14 +24,15 @@ public class LevelOne extends Level {
 
 	}
 
-	public int currentLevel() {	
+	public int currentLevel() {
 		return level;
 	}
 
 	@Override
 	public Level nextLevel(Level level, Player player) {
-		handler.removeAllBlocks();
-        Level nextLevel = new LevelTwo(handler, player);
+        handler.removeAllBlocks();
+        handler.removeAllEnemies();
+        Level nextLevel = new LevelThree(handler, player);
 		Game.mapConstraints = nextLevel.getMapConstraints();
 		player.hasKey = false;
         return nextLevel;

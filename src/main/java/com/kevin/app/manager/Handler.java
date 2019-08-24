@@ -40,7 +40,7 @@ public class Handler {
         for (int i = 0; i < sBlocks.size(); i++) {
             sBlocks.get(i).render(g);
         }
-        
+
         for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).render(g);
         }
@@ -60,6 +60,14 @@ public class Handler {
 
     public void removeEnemy(EnemyObject enemy) {
         enemies.remove(enemy);
+    }
+
+    public void removeSpecialBlock(BlockObject block){
+        sBlocks.remove(block);
+    }
+    
+    public void removeAllSpecialBlocks(){
+        sBlocks.clear();
     }
 
     public void removeAllBlocks() {

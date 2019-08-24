@@ -4,13 +4,13 @@ import java.awt.Graphics2D;
 
 import com.kevin.app.abstract_objects.Level;
 import com.kevin.app.manager.Handler;
-import com.kevin.app.objects.Clue;
 import com.kevin.app.objects.Player;
+import com.kevin.app.states.Game;
 
 public class LevelTwo extends Level {
 
-	public LevelTwo(Handler handler) {
-		super(handler, 2);
+	public LevelTwo(Handler handler, Player player) {
+		super(handler, 2, player);
 		loadLevelText();
 	}
 
@@ -30,7 +30,12 @@ public class LevelTwo extends Level {
 
 	@Override
 	public Level nextLevel(Level level, Player player) {
-        return null;
+		handler.removeAllBlocks();
+		handler.removeAllEnemies();
+        Level nextLevel = new LevelThree(handler, player);
+		Game.mapConstraints = nextLevel.getMapConstraints();
+		player.hasKey = false;
+        return nextLevel;
 	}
 
 }

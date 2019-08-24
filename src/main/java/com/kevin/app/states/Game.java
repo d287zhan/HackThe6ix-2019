@@ -20,14 +20,14 @@ public class Game extends State {
     private App app;
     private Camera camera;
     public static Level level;
-    private static Handler handler;
+    public static Handler handler;
     public static int[] mapConstraints;
 
     public Game(int player_x, int player_y, App app, Handler handler) {
         this.handler = handler;
         this.app = app;
         initializePlayer(player_x, player_y);
-        this.level = new LevelZero(handler);
+        this.level = new LevelZero(handler, player);
         mapConstraints = this.level.getMapConstraints();
         App.hud.setPlayer(player);
         camera = new Camera(0, 0);

@@ -19,10 +19,12 @@ public abstract class Level {
     protected String clue;
     protected Queue<String> text = new LinkedList();
     protected Queue<String> textOwner = new LinkedList();
+    protected Player player;
 
-    public Level(Handler handler, int level) {
+    public Level(Handler handler, int level, Player player) {
         this.handler = handler;
         this.level = level;
+        this.player = player;
         loadLevelClue();
         mapConstraints = loadLevel(clue);
     }
@@ -71,7 +73,7 @@ public abstract class Level {
     protected int[] loadLevel(String clue) {
         BufferedImageLoader loader = new BufferedImageLoader();
         int[] mapConstraints = App.loadImageLevel(loader.loadImage("/levels/level" + level + ".png"), this.handler,
-                clue);
+                clue, player);
         return mapConstraints;
     }
 

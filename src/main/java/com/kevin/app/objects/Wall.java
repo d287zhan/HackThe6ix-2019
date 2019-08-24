@@ -12,7 +12,7 @@ import com.kevin.app.main.App;
 public class Wall extends BlockObject {
 
     BufferedImage image;
-    private boolean closed = true;
+    public boolean closed = true;
 
     public Wall(float x, float y, ObjectIds ObjectId, BlockId blockId) {
         super(x, y, ObjectId, blockId);

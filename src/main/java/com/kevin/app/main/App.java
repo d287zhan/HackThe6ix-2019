@@ -157,7 +157,7 @@ public class App extends Canvas implements Runnable {
         stop();
     }
 
-    public static int[] loadImageLevel(BufferedImage image, Handler handler, String clue) {
+    public static int[] loadImageLevel(BufferedImage image, Handler handler, String clue, Player player) {
         int w = image.getWidth();
         int h = image.getHeight();
 
@@ -222,7 +222,8 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addEnemy(new Pirate(xx * 64, yy * 64, ObjectIds.Enemy, EnemyId.Pirate));
                 } else if (red == 11 && green == 76 && blue == 77){
-                    // player
+                    player.setPosition(xx*64, yy*64);
+                    Player.respawnPosition = new int[]{(xx+1) * 64, yy*64};
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                 } else if (red == 9 && green == 255 && blue == 85){
                     handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.WallStraightBottom));
