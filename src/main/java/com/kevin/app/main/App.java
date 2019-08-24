@@ -203,7 +203,16 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Floor(xx * 64, (yy + 1) * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addSpecialBlocks(new Stairs(xx * 64, yy * 64, ObjectIds.Block, BlockId.Stairs));
-                } else {
+                } else if (red == 0 && green == 100 && blue == 100 ){
+                    //stair up 
+                } else if ( red == 0 && green == 57 && blue == 12){
+                    //fake key
+                }
+                else if (red == 251 && green == 255 && blue == 25){
+                    //water
+                }else if (red == 23 && green == 230 && blue == 203){
+                    //real key
+                }else {
                     handler.addBlocks(new ColorOnStepTile(xx * 64, yy * 64, ObjectIds.Block, BlockId.ColorTile,
                             new Color(red, green, blue)));
                 }
