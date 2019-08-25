@@ -11,8 +11,10 @@ import java.util.HashMap;
 
 import com.kevin.app.HUD.HUD;
 import com.kevin.app.abstract_objects.BlockObject;
+import com.kevin.app.abstract_objects.EnemyObject;
 import com.kevin.app.abstract_objects.PlayerObject;
 import com.kevin.app.ids.BlockId;
+import com.kevin.app.ids.EnemyId;
 import com.kevin.app.ids.ObjectIds;
 import com.kevin.app.ids.PlayerId;
 import com.kevin.app.main.App;
@@ -120,8 +122,16 @@ public class Player extends PlayerObject {
                 Game.handleLevelChange();
             } else if (block.getBlockId().equals(BlockId.Orange) && block.getBounds().intersects(this.getBounds())) {
                 // deaths++;
-                // HUD.isDead = true;
-                // App.hud.showBlack = true;
+                HUD.isDead = true;
+                App.hud.showBlack = true;
+            }
+        }
+
+        for (int i = 0; i < handler.enemies.size(); i++) {
+            EnemyObject enemy = handler.enemies.get(i);
+            if (enemy.getEnemyId().equals(EnemyId.Patrick) && enemy.getBounds().intersects(getBounds())) {
+                HUD.isDead = true;
+                App.hud.showBlack = true;
             }
         }
 

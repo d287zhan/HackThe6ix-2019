@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import com.kevin.app.HUD.HUD;
 import com.kevin.app.abstract_objects.BlockObject;
 import com.kevin.app.abstract_objects.EnemyObject;
 import com.kevin.app.ids.BlockId;
@@ -33,7 +34,10 @@ public class Patrick extends EnemyObject {
 
     @Override
     public void tick() {
-        if (!App.hud.showText) {
+        if (HUD.isDead) {
+            recharge = 300;
+        }
+        if (!App.hud.showText && !HUD.isDead) {
             if (recharge > 0) {
                 recharge--;
                 if (recharge == 0) {

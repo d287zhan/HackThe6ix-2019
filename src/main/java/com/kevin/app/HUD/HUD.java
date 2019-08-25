@@ -52,7 +52,7 @@ public class HUD {
 
         g.drawImage(App.getImageFromTextures("skull"), 750, 10, 64, 64, null);
         g.setFont(App.gameFont.deriveFont(20f));
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.drawString("" + player.deaths, 820, 50);
 
         if (renderBlack || showBlack) {

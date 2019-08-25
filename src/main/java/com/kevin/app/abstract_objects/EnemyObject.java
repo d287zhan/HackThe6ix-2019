@@ -12,4 +12,7 @@ public abstract class EnemyObject extends Object {
         this.eid = enemyId;
     }
 
+    public EnemyId getEnemyId() {
+        return this.eid;
+    }
 }
