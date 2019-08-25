@@ -1,6 +1,7 @@
 package com.kevin.app.objects;
 
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -66,7 +67,6 @@ public class Patrick extends EnemyObject {
             x += velX;
             y += velY;
         }
-
     }
 
     public void collision() {
@@ -91,7 +91,8 @@ public class Patrick extends EnemyObject {
         for (int i = 0; i < Game.handler.blocks.size(); i++) {
             BlockObject block = Game.handler.blocks.get(i);
             if (block.getBounds() != null && block.getBounds().intersects(getBounds())) {
-                if (block.getBlockId().equals(BlockId.WallStraightBottom)) {
+                if (block.getBlockId().equals(BlockId.WallStraightBottom)
+                        || block.getBlockId().equals(BlockId.DoorExit)) {
                     if (x + velX > block.getBounds().getX()) {
                         velX = 0;
                         velY = 0;
@@ -115,6 +116,26 @@ public class Patrick extends EnemyObject {
     @Override
     public Rectangle getBounds() {
         return new Rectangle((int) x, (int) y, size, size);
+    }
+
+    public Polygon getAccurateBounds() {
+        Polygon poly = new Polygon();
+        int x = (int) this.x;
+        int y = (int) this.y;
+        int xs[] = { x, x + 27, x + 27, x + 54, x + 55, x + 83, x + 83, x + 110, x + 110, x + 138, x + 138, x + 166,
+                x + 166, x + 194, x + 194, x + 222, x + 222, x + 250, x + 250, x + 277, x + 277, x + 360, x + 360,
+                x + 388, x + 388, x + 360, x + 360, x + 388, x + 388, x + 416, x + 416, x + 443, x + 443, x + 471,
+                x + 471, x + 499, x + 499, x + 471, x + 471, x + 443, x + 443, x + 416, x + 416, x + 388, x + 388,
+                x + 305, x + 305, x + 193, x + 193, x + 110, x + 110, x + 82, x + 82, x + 54, x + 54, x + 26, x + 26,
+                x };
+        int ys[] = { (y + 322), (y + 322), y + 304, y + 304, y + 286, y + 286, y + 268, y + 268, y + 250, y + 250,
+                y + 160, y + 160, y + 107, y + 107, y + 71, y + 71, y + 35, y + 35, y + 17, y + 17, y, y, y + 17,
+                y + 17, y + 70, y + 70, y + 232, y + 232, y + 250, y + 250, y + 268, y + 268, y + 286, y + 286, y + 304,
+                y + 304, y + 374, y + 374, y + 392, y + 392, y + 428, y + 428, y + 464, y + 464, y + 499, y + 499,
+                y + 464, y + 464, y + 499, y + 499, y + 464, y + 464, y + 428, y + 428, y + 393, y + 393, y + 375,
+                y + 375 };
+        int numOfPoints = xs.length;
+        return new Polygon(xs, ys, numOfPoints);
     }
 
 }

@@ -13,21 +13,18 @@ import com.kevin.app.main.App;
 public class Block extends BlockObject {
 
     BufferedImage image;
+
     public Block(float x, float y, ObjectIds ObjectId, BlockId blockId) {
         super(x, y, ObjectId, blockId);
-        if(blockId.equals(BlockId.Water)){
-            image = App.getImageFromTextures("water");
-        }else if(blockId.equals(BlockId.Key) || blockId.equals(BlockId.FakeKey)){
+        if (blockId.equals(BlockId.Key) || blockId.equals(BlockId.FakeKey)) {
             image = App.getImageFromTextures("key");
         }
     }
 
-	@Override
+    @Override
     public void render(Graphics2D g) {
-        if(bid.equals(BlockId.Water)){
-            g.drawImage(image, (int)x, (int)y, 64, 64, null);
-        }else if(bid.equals(BlockId.FakeKey) || bid.equals(BlockId.Key)){
-            g.drawImage(image, (int)x + 16, (int)y + 16, 32, 32, null);
+        if (bid.equals(BlockId.FakeKey) || bid.equals(BlockId.Key)) {
+            g.drawImage(image, (int) x + 16, (int) y + 16, 32, 32, null);
         }
     }
 
@@ -37,8 +34,8 @@ public class Block extends BlockObject {
     }
 
     @Override
-	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 64, 64);
-	}
-    
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, 64, 64);
+    }
+
 }

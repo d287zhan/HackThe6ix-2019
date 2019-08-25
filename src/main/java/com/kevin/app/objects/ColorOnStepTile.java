@@ -23,35 +23,36 @@ public class ColorOnStepTile extends BlockObject {
         super(x, y, ObjectId, blockId);
         this.onStepColor = color;
         Random rand = new Random();
-        floor = App.getImageFromTextures("floor"+(rand.nextInt(16)+1));
+        // floor = App.getImageFromTextures("floor"+(rand.nextInt(16)+1));
+        floor = App.getImageFromTextures("floor_wood");
     }
 
-	@Override
+    @Override
     public void render(Graphics2D g) {
-        g.drawImage(floor, (int)x, (int)y, 64, 64, null);
-        if(stepped){
+        g.drawImage(floor, (int) x, (int) y, 64, 64, null);
+        if (stepped) {
             g.setColor(onStepColor);
             g.setComposite(AlphaComposite.SrcOver.derive(colorComposite));
-            g.fillRect((int)x, (int)y, 64, 64);
+            g.fillRect((int) x, (int) y, 64, 64);
             g.setComposite(AlphaComposite.SrcOver);
         }
         g.setColor(Color.white);
-        g.drawRect((int)x, (int)y, 64, 64);
+        g.drawRect((int) x, (int) y, 64, 64);
     }
 
     @Override
     public void tick() {
-        if(stepped && colorComposite < 0.99f){
-            colorComposite+=0.01f;
+        if (stepped && colorComposite < 0.95f) {
+            colorComposite += 0.05f;
         }
     }
 
     @Override
-	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 64, 64);
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, 64, 64);
     }
-    
-    public void setStepped(boolean stepped){
+
+    public void setStepped(boolean stepped) {
         this.stepped = stepped;
     }
 }

@@ -129,7 +129,8 @@ public class Player extends PlayerObject {
 
         for (int i = 0; i < handler.enemies.size(); i++) {
             EnemyObject enemy = handler.enemies.get(i);
-            if (enemy.getEnemyId().equals(EnemyId.Patrick) && enemy.getBounds().intersects(getBounds())) {
+            if (enemy.getEnemyId().equals(EnemyId.Patrick)
+                    && ((Patrick) enemy).getAccurateBounds().intersects(getBounds())) {
                 HUD.isDead = true;
                 App.hud.showBlack = true;
             }

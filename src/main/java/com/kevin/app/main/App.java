@@ -28,6 +28,7 @@ import com.kevin.app.objects.Pirate;
 import com.kevin.app.objects.Player;
 import com.kevin.app.objects.Stairs;
 import com.kevin.app.objects.Wall;
+import com.kevin.app.objects.Water;
 
 public class App extends Canvas implements Runnable {
 
@@ -213,7 +214,7 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.FakeKey));
                 } else if (red == 251 && green == 255 && blue == 25) {
-                    handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Water));
+                    handler.addBlocks(new Water(xx * 64, yy * 64, ObjectIds.Block, BlockId.Water));
                 } else if (red == 23 && green == 230 && blue == 203) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Key));

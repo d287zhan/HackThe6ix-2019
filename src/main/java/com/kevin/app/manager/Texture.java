@@ -7,8 +7,9 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet, extra_sheet, patrick, FenceHFake;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image, patrick_image;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet, extra_sheet, patrick, water_sheet;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image, patrick_image,
+            water_image;
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
     public Texture() {
@@ -23,6 +24,7 @@ public class Texture {
             fire_image = loader.loadImage("/sprites/fire.png");
             extra_image = loader.loadImage("/sprites/other_stuff.png");
             patrick_image = loader.loadImage("/sprites/Patrick.png");
+            water_image = loader.loadImage("/sprites/water.png");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,6 +36,7 @@ public class Texture {
         fire_sheet = new SpriteSheet(fire_image);
         extra_sheet = new SpriteSheet(extra_image);
         patrick = new SpriteSheet(patrick_image);
+        water_sheet = new SpriteSheet(water_image);
         getTextures();
 
     }
@@ -119,6 +122,23 @@ public class Texture {
 
         sprites.put("door_exit", wall_sheet.grabImage(0, 96, 32, 14));
         sprites.put("skull", wall_sheet.grabImage(223, 0, 157, 120));
+        sprites.put("floor_wood", wall_sheet.grabImage(64, 96, 32, 32));
 
+        sprites.put("water1", water_sheet.grabImage(0, 0, 128, 128));
+        sprites.put("water2", water_sheet.grabImage(128, 0, 128, 128));
+        sprites.put("water3", water_sheet.grabImage(256, 0, 128, 128));
+        sprites.put("water4", water_sheet.grabImage(384, 0, 128, 128));
+        sprites.put("water5", water_sheet.grabImage(0, 128, 128, 128));
+        sprites.put("water6", water_sheet.grabImage(128, 128, 128, 128));
+        sprites.put("water7", water_sheet.grabImage(256, 128, 128, 128));
+        sprites.put("water8", water_sheet.grabImage(384, 128, 128, 128));
+        sprites.put("water9", water_sheet.grabImage(0, 256, 128, 128));
+        sprites.put("water10", water_sheet.grabImage(128, 256, 128, 128));
+        sprites.put("water11", water_sheet.grabImage(256, 256, 128, 128));
+        sprites.put("water12", water_sheet.grabImage(384, 256, 128, 128));
+        sprites.put("water13", water_sheet.grabImage(0, 384, 128, 128));
+        sprites.put("water14", water_sheet.grabImage(128, 384, 128, 128));
+        sprites.put("water15", water_sheet.grabImage(256, 384, 128, 128));
+        sprites.put("water16", water_sheet.grabImage(384, 384, 128, 128));
     }
 }

@@ -17,7 +17,8 @@ public class Floor extends BlockObject {
     public Floor(float x, float y, ObjectIds ObjectId, BlockId blockId) {
         super(x, y, ObjectId, blockId);
         Random rand = new Random();
-        image = App.getImageFromTextures("floor"+(rand.nextInt(16)+1));
+        image = App.getImageFromTextures("floor_wood");
+        // image = App.getImageFromTextures("floor"+(rand.nextInt(16)+1));
     }
 
     @Override
@@ -25,7 +26,7 @@ public class Floor extends BlockObject {
         // g.setColor(Color.black);
         // g.fillRect((int) x, (int) y, 64, 64);
 
-        g.drawImage(image, (int)x, (int)y, 64, 64, null);
+        g.drawImage(image, (int) x, (int) y, 64, 64, null);
 
         // g.setColor(Color.white);
         // g.drawRect((int) x, (int) y, 64, 64);

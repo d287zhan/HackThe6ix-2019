@@ -19,28 +19,32 @@ public class Camera {
 
     public void tick(PlayerObject player) {
 
-        if (x + ((player.getX() - x) - App.WIDTH / 2) * speed >= 0
-                && x + ((player.getX() - x) - App.WIDTH / 2) * speed <= (Game.mapConstraints[0] - App.WIDTH + 15)) {
-            x += ((player.getX() - x) - App.WIDTH / 2) * speed;
-        }
-        if (y + ((player.getY() - y) - App.HEIGHT / 2) * speed >= 0
-                && y + ((player.getY() - y) - App.HEIGHT / 2) * speed <= (Game.mapConstraints[1] - (App.HEIGHT))) {
-            y += ((player.getY() - y) - App.HEIGHT / 2) * speed;
-        }
+        // if (x + ((player.getX() - x) - App.WIDTH / 2) * speed >= 0
+        // && x + ((player.getX() - x) - App.WIDTH / 2) * speed <=
+        // (Game.mapConstraints[0] - App.WIDTH + 15)) {
+        // x += ((player.getX() - x) - App.WIDTH / 2) * speed;
+        // }
+        // if (y + ((player.getY() - y) - App.HEIGHT / 2) * speed >= 0
+        // && y + ((player.getY() - y) - App.HEIGHT / 2) * speed <=
+        // (Game.mapConstraints[1] - (App.HEIGHT))) {
+        // y += ((player.getY() - y) - App.HEIGHT / 2) * speed;
+        // }
+        x += ((player.getX() - x) - App.WIDTH / 2) * speed;
+        y += ((player.getY() - y) - App.HEIGHT / 2) * speed;
 
         if (shake) {
             if (shakeDuration == 0) {
-                x -= 4;
+                x -= 5;
                 shake = false;
                 shakeDuration = 60;
                 return;
             }
             if (shakeDuration == 60) {
-                x += 4;
+                x += 5;
             } else if (shakeDuration % 2 == 1) {
-                x -= 8;
+                x -= 10;
             } else if (shakeDuration % 2 == 0) {
-                x += 8;
+                x += 10;
             }
             shakeDuration--;
         }
