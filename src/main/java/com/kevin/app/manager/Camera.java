@@ -6,6 +6,8 @@ import com.kevin.app.states.Game;
 
 public class Camera {
 
+    private boolean shake = false;
+    private int shakeDuration = 60;
     private float x, y;
 
     private float speed = 0.05f;
@@ -24,6 +26,23 @@ public class Camera {
         if (y + ((player.getY() - y) - App.HEIGHT / 2) * speed >= 0
                 && y + ((player.getY() - y) - App.HEIGHT / 2) * speed <= (Game.mapConstraints[1] - (App.HEIGHT))) {
             y += ((player.getY() - y) - App.HEIGHT / 2) * speed;
+        }
+
+        if (shake) {
+            if (shakeDuration == 0) {
+                x -= 4;
+                shake = false;
+                shakeDuration = 60;
+                return;
+            }
+            if (shakeDuration == 60) {
+                x += 4;
+            } else if (shakeDuration % 2 == 1) {
+                x -= 8;
+            } else if (shakeDuration % 2 == 0) {
+                x += 8;
+            }
+            shakeDuration--;
         }
 
         // if ((x + ((player.getX() - x) - App.WIDTH / 2) * speed) <= 0) {
@@ -56,5 +75,9 @@ public class Camera {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    public void setShake() {
+        this.shake = true;
     }
 }

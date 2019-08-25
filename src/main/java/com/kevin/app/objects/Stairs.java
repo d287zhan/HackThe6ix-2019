@@ -22,8 +22,6 @@ public class Stairs extends BlockObject {
     @Override
     public void render(Graphics2D g) {
         g.drawImage(image, (int) x - 64, (int) y, 128, 128, null);
-        g.setColor(Color.red);
-        g.draw(getBounds());
     }
 
     @Override

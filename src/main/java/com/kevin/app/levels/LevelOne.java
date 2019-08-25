@@ -26,17 +26,17 @@ public class LevelOne extends Level {
 
 	}
 
-	public int currentLevel() {	
+	public int currentLevel() {
 		return level;
 	}
 
 	@Override
 	public Level nextLevel(Level level, Player player) {
 		handler.removeAllBlocks();
-        Level nextLevel = new LevelTwo(handler, player);
+		Level nextLevel = new LevelTwo(handler, player);
 		Game.mapConstraints = nextLevel.getMapConstraints();
 		player.hasKey = false;
-        return nextLevel;
+		return nextLevel;
 	}
 
 }

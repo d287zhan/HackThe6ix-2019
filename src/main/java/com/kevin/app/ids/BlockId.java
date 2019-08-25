@@ -2,5 +2,6 @@ package com.kevin.app.ids;
 
 public enum BlockId {
     Floor, ColorTile, Wall, WallTop, WallCurveLeft, WallStraight, WallCurveLeftBottom, WallStraightBottom,
-    WallStraightRight, WallCurveTopRight, WallCurveBottomRight, Door, DoorPillar, DoorPillarTop, Clue, Fire, Stairs, StairsPrevUp, Water, FakeKey, Key, Orange
+    WallStraightRight, WallCurveTopRight, WallCurveBottomRight, Door, DoorPillar, DoorPillarTop, Clue, Fire, Stairs,
+    StairsPrevUp, Water, FakeKey, Key, Orange, DoorExit, FakeVerticalWallRight, FakeHorizontalWall
 }

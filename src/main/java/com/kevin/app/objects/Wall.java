@@ -17,13 +17,13 @@ public class Wall extends BlockObject {
     public Wall(float x, float y, ObjectIds ObjectId, BlockId blockId) {
         super(x, y, ObjectId, blockId);
 
-        if (blockId.equals(BlockId.Wall)) {
+        if (blockId.equals(BlockId.Wall) || blockId.equals(BlockId.FakeHorizontalWall)) {
             image = App.getImageFromTextures("wall_body");
         } else if (blockId.equals(BlockId.WallTop)) {
             image = App.getImageFromTextures("wall_top");
         } else if (blockId.equals(BlockId.WallCurveLeft)) {
             image = App.getImageFromTextures("wall_curve_left");
-        } else if (blockId.equals(BlockId.WallStraight)) {
+        } else if (blockId.equals(BlockId.WallStraight) || blockId.equals(BlockId.FakeVerticalWallRight)) {
             image = App.getImageFromTextures("wall_straight");
         } else if (blockId.equals(BlockId.WallCurveLeftBottom)) {
             image = App.getImageFromTextures("wall_curve_bottom_left");
@@ -41,14 +41,16 @@ public class Wall extends BlockObject {
             image = App.getImageFromTextures("door_pillar_bottom");
         } else if (blockId.equals(BlockId.DoorPillarTop)) {
             image = App.getImageFromTextures("door_pillar_top");
-        } else if (blockId.equals(BlockId.StairsPrevUp)){
+        } else if (blockId.equals(BlockId.StairsPrevUp)) {
             image = App.getImageFromTextures("stairs_after_up");
+        } else if (blockId.equals(BlockId.DoorExit)) {
+            image = App.getImageFromTextures("door_exit");
         }
     }
 
     @Override
     public void render(Graphics2D g) {
-        
+
         g.drawImage(image, (int) x, (int) y, 64, 64, null);
     }
 
@@ -58,7 +60,7 @@ public class Wall extends BlockObject {
             image = App.getImageFromTextures("door_open");
         }
 
-        if(Player.hasKey && bid.equals(BlockId.Door)){
+        if (Player.hasKey && bid.equals(BlockId.Door)) {
             closed = false;
         }
     }

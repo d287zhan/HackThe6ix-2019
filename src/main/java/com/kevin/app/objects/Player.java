@@ -1,8 +1,11 @@
 package com.kevin.app.objects;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
 import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
@@ -81,7 +84,7 @@ public class Player extends PlayerObject {
             y = Game.mapConstraints[0] - playerHeight;
         }
 
-        if(!App.hud.showBlack && !App.hud.showText && !HUD.isDead){
+        if (!App.hud.showBlack && !App.hud.showText && !HUD.isDead) {
             x += velX;
             y += velY;
         }
@@ -115,7 +118,7 @@ public class Player extends PlayerObject {
             BlockObject block = handler.sBlocks.get(i);
             if (block.getBlockId().equals(BlockId.Stairs) && block.getBounds().intersects(this.getBounds())) {
                 Game.handleLevelChange();
-            }else if(block.getBlockId().equals(BlockId.Orange) && block.getBounds().intersects(this.getBounds())){
+            } else if (block.getBlockId().equals(BlockId.Orange) && block.getBounds().intersects(this.getBounds())) {
                 // deaths++;
                 // HUD.isDead = true;
                 // App.hud.showBlack = true;
@@ -137,7 +140,7 @@ public class Player extends PlayerObject {
                 x = block.getX() + 64;
             } else if (block.getBlockId().equals(BlockId.WallStraightRight)
                     && block.getBounds().intersects(this.getBounds())) {
-                // x = block.getX() - 68;
+                x = block.getX() - 68;
             } else if (block.getBlockId().equals(BlockId.WallStraightBottom)
                     && block.getBounds().intersects(this.getFootBounds()) && velY > 0) {
                 y = block.getY() - playerHeight - 6;
@@ -152,28 +155,29 @@ public class Player extends PlayerObject {
                 }
             }
 
-            if((block.getBlockId().equals(BlockId.Water) || block.getBlockId().equals(BlockId.FakeKey)) && 
-                block.getBounds().intersects(this.getFootBounds())){
-                deaths++;
+            if ((block.getBlockId().equals(BlockId.Water) || block.getBlockId().equals(BlockId.FakeKey))
+                    && block.getBounds().intersects(this.getFootBounds())) {
                 HUD.isDead = true;
                 App.hud.showBlack = true;
             }
 
-            if(block.getBlockId().equals(BlockId.Key) && block.getBounds().intersects(this.getFootBounds())){
+            if (block.getBlockId().equals(BlockId.Key) && block.getBounds().intersects(this.getFootBounds())) {
                 hasKey = true;
                 handler.removeBlock(block);
             }
 
-            if (block.getBlockId().equals(BlockId.Door) && !((Wall)block).closed && block.getBounds().intersects(this.getFootBounds())) {
+            if (block.getBlockId().equals(BlockId.Door) && !((Wall) block).closed
+                    && block.getBounds().intersects(this.getFootBounds())) {
                 Game.handleLevelChange();
             }
 
-            if(Game.level.getLevel() == 3 && block.getBlockId().equals(BlockId.ColorTile) && !((ColorOnStepTile)block).stepped){
+            if (Game.level.getLevel() == 3 && block.getBlockId().equals(BlockId.ColorTile)
+                    && !((ColorOnStepTile) block).stepped) {
                 allStepped = false;
             }
         }
 
-        if(allStepped && Game.level.getLevel() == 3){
+        if (allStepped && Game.level.getLevel() == 3) {
             hasKey = true;
         }
     }
@@ -186,6 +190,17 @@ public class Player extends PlayerObject {
             g.drawImage(stillPlayer.get(direction), (int) x, (int) y, 57, 87, null);
         } else {
             pAnimations.get(direction).drawAnimation(g, (int) x, (int) y, 57, 87);
+        }
+
+        if (Game.level.getLevel() == 5) {
+            Point2D center = new Point2D.Float(this.getX() + 57 / 2, this.getY() + 87 / 2);
+            float dist[] = { 0.0f, 1.0f };
+            Color[] colors = { new Color(0, 0, 0, 0.1f), Color.black };
+            RadialGradientPaint p = new RadialGradientPaint(center, 120, dist, colors);
+
+            g.setPaint(p);
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+            g.fillRect(0, 0, Game.mapConstraints[0] * 64, Game.mapConstraints[1] * 64);
         }
         // g.setColor(Color.red);
         // g.draw(getBounds());

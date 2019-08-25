@@ -208,30 +208,34 @@ public class App extends Canvas implements Runnable {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Floor(xx * 64, (yy + 1) * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addSpecialBlocks(new Stairs(xx * 64, yy * 64, ObjectIds.Block, BlockId.Stairs));
-                } else if (red == 0 && green == 100 && blue == 100 ){
+                } else if (red == 0 && green == 100 && blue == 100) {
                     handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.StairsPrevUp));
-                    Player.respawnPosition = new int[]{(xx+1) * 64, yy*64};
-                } else if ( red == 0 && green == 57 && blue == 12){
+                    Player.respawnPosition = new int[] { (xx + 1) * 64, yy * 64 };
+                } else if (red == 0 && green == 57 && blue == 12) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.FakeKey));
-                } else if (red == 251 && green == 255 && blue == 25){
+                } else if (red == 251 && green == 255 && blue == 25) {
                     handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Water));
-                } else if (red == 23 && green == 230 && blue == 203){
+                } else if (red == 23 && green == 230 && blue == 203) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addBlocks(new Block(xx * 64, yy * 64, ObjectIds.Block, BlockId.Key));
-                } else if (red == 25 && green == 1 && blue == 255){
+                } else if (red == 25 && green == 1 && blue == 255) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addEnemy(new Pirate(xx * 64, yy * 64, ObjectIds.Enemy, EnemyId.Pirate));
-                } else if (red == 11 && green == 76 && blue == 77){
-                    player.setPosition(xx*64, yy*64);
-                    Player.respawnPosition = new int[]{(xx+1) * 64, yy*64};
+                } else if (red == 11 && green == 76 && blue == 77) {
+                    player.setPosition(xx * 64, yy * 64);
+                    Player.respawnPosition = new int[] { (xx + 1) * 64, yy * 64 };
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
-                } else if (red == 9 && green == 255 && blue == 85){
-                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.WallStraightBottom));
-                } else if (red == 25 && green == 10 && blue == 255){
+                } else if (red == 9 && green == 255 && blue == 85) {
+                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.DoorExit));
+                } else if (red == 25 && green == 10 && blue == 255) {
                     handler.addBlocks(new Floor(xx * 64, yy * 64, ObjectIds.Block, BlockId.Floor));
                     handler.addEnemy(new Patrick(xx * 64, yy * 64, ObjectIds.Enemy, EnemyId.Patrick));
-                }else {
+                } else if (red == 105 && green == 132 && blue == 51) {
+                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.FakeHorizontalWall));
+                } else if (red == 105 && green == 132 && blue == 50) {
+                    handler.addBlocks(new Wall(xx * 64, yy * 64, ObjectIds.Block, BlockId.FakeVerticalWallRight));
+                } else {
                     handler.addBlocks(new ColorOnStepTile(xx * 64, yy * 64, ObjectIds.Block, BlockId.ColorTile,
                             new Color(red, green, blue)));
                 }
@@ -251,16 +255,15 @@ public class App extends Canvas implements Runnable {
             return false;
     }
 
-    public static BufferedImage flipImageHorizontally(BufferedImage original) 
-	{
-		BufferedImage newImage = original;
-		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-		tx.translate(-original.getWidth(null), 0);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-		newImage = op.filter(newImage, null);
+    public static BufferedImage flipImageHorizontally(BufferedImage original) {
+        BufferedImage newImage = original;
+        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+        tx.translate(-original.getWidth(null), 0);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        newImage = op.filter(newImage, null);
 
-		return newImage;
-	}
+        return newImage;
+    }
 
     public static BufferedImage getImageFromTextures(String key) {
         return tex.sprites.get(key);

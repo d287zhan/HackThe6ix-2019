@@ -40,6 +40,7 @@ public class LevelZero extends Level implements KeyListener {
         Level nextLevel = new LevelOne(handler, player);
         Game.mapConstraints = nextLevel.getMapConstraints();
         player.setPosition(100, 100);
+        Game.app.removeKeyListener(this);
         return nextLevel;
     }
 
@@ -79,7 +80,7 @@ public class LevelZero extends Level implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
+
     }
 
 }

@@ -31,15 +31,16 @@ public class KeyInputHandler extends KeyAdapter {
 
         int key = event.getKeyCode();
 
-        if(HUD.isDead){
-            if(key == KeyEvent.VK_SPACE){
+        if (HUD.isDead) {
+            if (key == KeyEvent.VK_SPACE) {
                 player.setPosition(Player.respawnPosition[0], Player.respawnPosition[1]);
                 HUD.isDead = false;
                 App.hud.showBlack = false;
+                player.deaths++;
             }
         }
 
-        if(key == KeyEvent.VK_O){
+        if (key == KeyEvent.VK_O) {
             player.hasKey = true;
         }
 

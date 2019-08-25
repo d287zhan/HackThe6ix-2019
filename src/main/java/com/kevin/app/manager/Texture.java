@@ -7,8 +7,10 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet,extra_sheet,patrick,FenceH,FenceVL,FenceVR,FenceHFake;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image,patrick_image,FenceH_img,FenceVL_img,FenceVR_img,FenceHFake_img;
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet, extra_sheet, patrick, FenceH, FenceVL, FenceVR,
+            FenceHFake;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image, patrick_image,
+            FenceH_img, FenceVL_img, FenceVR_img, FenceHFake_img;
 
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
@@ -24,10 +26,10 @@ public class Texture {
             fire_image = loader.loadImage("/sprites/fire.png");
             extra_image = loader.loadImage("/sprites/other_stuff.png");
             patrick_image = loader.loadImage("/sprites/Patrick.png");
-            FenceH_img = loader.loadImage("/sprites/HFence.png");
-            FenceVR_img = loader.loadImage("/sprites/VFenceR.png");
-            FenceVL_img = loader.loadImage("/sprites/VFenceL.png");
-            FenceHFake_img = loader.loadImage("/sprites/HFenceFake.png");
+            FenceH_img = loader.loadImage("/sprites/Hfence.png");
+            FenceVR_img = loader.loadImage("/sprites/VfenceR.png");
+            FenceVL_img = loader.loadImage("/sprites/VfenceL.png");
+            FenceHFake_img = loader.loadImage("/sprites/HfenceFake.png");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,27 +112,29 @@ public class Texture {
 
         sprites.put("stairs_up", wall_sheet.grabImage(128, 0, 95, 143));
 
-        //Characters
-        sprites.put("shady_dealer" , wall_sheet.grabImage(1,182,47,48));
-        sprites.put("pirate_boss" , wall_sheet.grabImage(272, 279, 210, 231));
+        // Characters
+        sprites.put("shady_dealer", wall_sheet.grabImage(1, 182, 47, 48));
+        sprites.put("pirate_boss", wall_sheet.grabImage(272, 279, 210, 231));
 
-        sprites.put("mug_shot" , wall_sheet.grabImage(301,0,43,37));
+        sprites.put("mug_shot", wall_sheet.grabImage(301, 0, 43, 37));
 
-        sprites.put("water" , extra_sheet.grabImage(0,0,258,258));
+        sprites.put("water", extra_sheet.grabImage(0, 0, 258, 258));
 
-        sprites.put("death_counter" , extra_sheet.grabImage(3,345,39,48));
+        sprites.put("death_counter", extra_sheet.grabImage(3, 345, 39, 48));
 
         sprites.put("stairs_after_up", App.flipImageHorizontally(wall_sheet.grabImage(28, 61, 32, 31)));
 
-        sprites.put("key",extra_sheet.grabImage(409,9,153,139));
+        sprites.put("key", extra_sheet.grabImage(409, 9, 153, 139));
 
-        sprites.put("Patrick",patrick.grabImage(154,104,548,722));
+        sprites.put("Patrick", patrick.grabImage(215, 150, 432, 669));
 
-        sprites.put("H Fence",HFence.grabImage(233,293,2883,991));
-        sprites.put("H Fence Fake",HFence.grabImage(233,293,2883,991));
-        sprites.put("VR Fence",HFence.grabImage(256,331,995,2875));
-        sprites.put("VL Fence",HFence.grabImage(290,233,991,2894));
+        sprites.put("door_exit", wall_sheet.grabImage(0, 96, 32, 14));
+        sprites.put("skull", wall_sheet.grabImage(223, 0, 157, 120));
 
+        // sprites.put("H Fence", FenceH.grabImage(233, 293, 2883, 991));
+        // sprites.put("H Fence Fake", FenceH.grabImage(233, 293, 2883, 991));
+        // sprites.put("VR Fence", FenceH.grabImage(256, 331, 995, 2875));
+        // sprites.put("VL Fence", FenceH.grabImage(290, 233, 991, 2894));
 
     }
 }

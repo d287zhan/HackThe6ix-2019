@@ -2,10 +2,11 @@ package com.kevin.app.states;
 
 import java.awt.Graphics2D;
 
-import com.kevin.app.HUD.HUD;
 import com.kevin.app.abstract_objects.Level;
 import com.kevin.app.ids.ObjectIds;
 import com.kevin.app.ids.PlayerId;
+import com.kevin.app.levels.LevelFour;
+import com.kevin.app.levels.LevelTwo;
 import com.kevin.app.levels.LevelZero;
 import com.kevin.app.main.App;
 import com.kevin.app.main.GameState;
@@ -17,8 +18,8 @@ import com.kevin.app.objects.Player;
 public class Game extends State {
 
     public static Player player;
-    private App app;
-    private Camera camera;
+    public static App app;
+    public static Camera camera;
     public static Level level;
     public static Handler handler;
     public static int[] mapConstraints;
@@ -62,5 +63,10 @@ public class Game extends State {
         App.hud.renderBlack = true;
         App.hud.setBlackTimeOut(10);
         level = level.nextLevel(level, player);
+        if (level.getLevel() == 2) {
+            app.addKeyListener((LevelTwo) level);
+        } else if (level.getLevel() == 4) {
+            app.addKeyListener((LevelFour) level);
+        }
     }
 }
