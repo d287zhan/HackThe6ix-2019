@@ -49,14 +49,6 @@ public class Patrick extends EnemyObject {
 
                     velX = (float) (speed * (diffX / Math.abs(diffY)));
                     velY = (float) (speed) * (diffY / Math.abs(diffY));
-
-                    if (velX != 0) {
-                        System.out.println("velx: " + velX);
-                    }
-
-                    if (velY != 0) {
-                        System.out.println("vely: " + velY);
-                    }
                     // double direction = Math.sqrt(Math.pow(lockOnTargetX - x, 2) +
                     // Math.pow(lockOnTargetY - y, 2));
                     speed += 1;

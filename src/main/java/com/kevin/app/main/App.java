@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.kevin.app.HUD.HUD;
-import com.kevin.app.audio.AudioMaster;
-import com.kevin.app.audio.Source;
 import com.kevin.app.ids.BlockId;
 import com.kevin.app.ids.EnemyId;
 import com.kevin.app.ids.ObjectIds;
@@ -50,13 +48,7 @@ public class App extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
 
-    public static Source PatrickSource;
-
     public static void main(String[] args) {
-        AudioMaster.init();
-        AudioMaster.setListenerData();
-        int buffer = AudioMaster.loadSound("/sounds/PATRICK.wav");
-        PatrickSource = new Source(buffer, 1.0f, 1.75f, 0, 0, 0);
         tex = new Texture();
         app = new App();
         hud = new HUD();
@@ -170,8 +162,6 @@ public class App extends Canvas implements Runnable {
         int w = image.getWidth();
         int h = image.getHeight();
 
-        System.out.println("Width: " + w);
-        System.out.println("Height: " + h);
         for (int xx = 0; xx < h; xx++) {
             for (int yy = 0; yy < w; yy++) {
                 int pixel = image.getRGB(xx, yy);

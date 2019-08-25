@@ -64,7 +64,6 @@ public class LevelFour extends Level implements KeyListener {
 
 		if (key == KeyEvent.VK_SPACE) {
 			textCount++;
-			System.out.println(textCount);
 			if (textCount <= 4) {
 				currentText = nextLine();
 				handleNextText();
