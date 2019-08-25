@@ -7,11 +7,8 @@ import com.kevin.app.main.App;
 
 public class Texture {
 
-    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet, extra_sheet, patrick, FenceH, FenceVL, FenceVR,
-            FenceHFake;
-    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image, patrick_image,
-            FenceH_img, FenceVL_img, FenceVR_img, FenceHFake_img;
-
+    SpriteSheet player_sheet, floor_sheet, wall_sheet, fire_sheet, extra_sheet, patrick, FenceHFake;
+    private BufferedImage player_image, floor_image, wall_image, textbox_image, fire_image, extra_image, patrick_image;
     public HashMap<String, BufferedImage> sprites = new HashMap<>();
 
     public Texture() {
@@ -26,10 +23,6 @@ public class Texture {
             fire_image = loader.loadImage("/sprites/fire.png");
             extra_image = loader.loadImage("/sprites/other_stuff.png");
             patrick_image = loader.loadImage("/sprites/Patrick.png");
-            FenceH_img = loader.loadImage("/sprites/Hfence.png");
-            FenceVR_img = loader.loadImage("/sprites/VfenceR.png");
-            FenceVL_img = loader.loadImage("/sprites/VfenceL.png");
-            FenceHFake_img = loader.loadImage("/sprites/HfenceFake.png");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,10 +34,6 @@ public class Texture {
         fire_sheet = new SpriteSheet(fire_image);
         extra_sheet = new SpriteSheet(extra_image);
         patrick = new SpriteSheet(patrick_image);
-        FenceH = new SpriteSheet(FenceH_img);
-        FenceVR = new SpriteSheet(FenceVR_img);
-        FenceVL = new SpriteSheet(FenceVL_img);
-        FenceHFake = new SpriteSheet(FenceHFake_img);
         getTextures();
 
     }
@@ -130,11 +119,6 @@ public class Texture {
 
         sprites.put("door_exit", wall_sheet.grabImage(0, 96, 32, 14));
         sprites.put("skull", wall_sheet.grabImage(223, 0, 157, 120));
-
-        // sprites.put("H Fence", FenceH.grabImage(233, 293, 2883, 991));
-        // sprites.put("H Fence Fake", FenceH.grabImage(233, 293, 2883, 991));
-        // sprites.put("VR Fence", FenceH.grabImage(256, 331, 995, 2875));
-        // sprites.put("VL Fence", FenceH.grabImage(290, 233, 991, 2894));
 
     }
 }
